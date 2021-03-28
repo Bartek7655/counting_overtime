@@ -20,7 +20,7 @@ while overtime != "end":
     overtime = enter_the_hours()
     if overtime == 'end':
         break
-    if overtime > datetime.timedelta(hours = 5, minutes = 59):
+    elif overtime > datetime.timedelta(hours = 5, minutes = 59):
         overtime = (overtime - datetime.timedelta(hours = 8, minutes = 30))
     elif overtime > datetime.timedelta(hours=8, minutes = 59):
         overtime = (overtime - datetime.timedelta(hours = 8, minutes = 45))
