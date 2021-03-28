@@ -18,13 +18,16 @@ finished_overtime = datetime.timedelta(seconds=0)
 while overtime != "end":
     print("Jeżeli chcesz zakończyć wprowadzanie, wpisz 'end'")
     overtime = enter_the_hours()
+
     if overtime == 'end':
         break
-    elif overtime > datetime.timedelta(hours = 5, minutes = 59):
-        overtime = (overtime - datetime.timedelta(hours = 8, minutes = 30))
-    elif overtime > datetime.timedelta(hours=8, minutes = 59):
-        overtime = (overtime - datetime.timedelta(hours = 8, minutes = 45))
-    elif overtime > datetime.timedelta(hours=11, minutes = 59):
-        overtime = (overtime - datetime.timedelta(hours = 9))
+    elif overtime >= datetime.timedelta(hours=13):
+        overtime = overtime - datetime.timedelta(hours=9)
+    elif overtime >= datetime.timedelta(hours=9, minutes=30):
+        overtime = overtime - datetime.timedelta(hours=8, minutes=45)
+    elif overtime > datetime.timedelta(hours=6, minutes=29):
+        overtime = overtime - datetime.timedelta(hours=8, minutes=30)
+
+    print(overtime)
     finished_overtime = finished_overtime + overtime
 print(f"Twoja suma nadgodzin: {finished_overtime}")
