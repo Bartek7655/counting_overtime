@@ -6,15 +6,15 @@ def enter_the_hours():
         start = input("Podaj godzinę rozpoczęcia pracy: ")
         if start == 'end':
             return 'end'
-        elif (":" in start) is False:
-            continue
+        # elif (":" in start) is False:
+        #     continue
         test_start = True
     while test_stop is False:
         stop = input("Podaj godzinę zakończenia pracy: ")
         if stop == 'end':
             return 'end'
-        elif (":" in stop) is False:
-            continue
+        # elif (":" in stop) is False:
+        #     continue
         test_stop = True
     start_time = start.split(':')
     stop_time = stop.split(':')
@@ -27,8 +27,11 @@ overtime = ''
 finished_overtime = datetime.timedelta(seconds=0)
 while overtime != "end":
     print("Jeżeli chcesz zakończyć wprowadzanie, wpisz 'end'")
-    overtime = enter_the_hours()
-
+    try:
+        overtime = enter_the_hours()
+    except Exception:
+        print("Podales błedny czas")
+        continue
     if overtime == 'end':
         break
     elif overtime >= datetime.timedelta(hours=13):
